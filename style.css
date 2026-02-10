@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #2dd4bf;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #14b8a6;
+}
+
+/* Utilities */
+.text-gradient {
+  background: linear-gradient(to right, #2dd4bf, #ccfbf1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(45, 212, 191, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px -10px rgba(45, 212, 191, 0.2);
+}
+
+/* HERO ROLE ANIMATION */
+.role {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: roleFade 0.6s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+.delay-2 {
+  animation-delay: 0.4s;
+}
+
+@keyframes roleFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Spacing */
+section {
+  position: relative;
+}
+
+/* Decorative Background Elements */
+.glow-blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(45, 212, 191, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
