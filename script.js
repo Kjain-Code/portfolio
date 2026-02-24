@@ -72,3 +72,45 @@ if (slider && nextBtn && prevBtn) {
     slider.scrollLeft = scrollLeft - walk;
   });
 }
+// Theme Toggle Logic
+const themeToggle = document.getElementById("themeToggle");
+const moonIcon = document.getElementById("moonIcon");
+const sunIcon = document.getElementById("sunIcon");
+
+const applyTheme = (theme) => {
+  if (theme === "light") {
+    document.documentElement.classList.add("light-mode");
+    moonIcon.classList.add("hidden");
+    sunIcon.classList.remove("hidden");
+  } else {
+    document.documentElement.classList.remove("light-mode");
+    moonIcon.classList.remove("hidden");
+    sunIcon.classList.add("hidden");
+  }
+  localStorage.setItem("theme", theme);
+};
+
+// Check for saved theme
+const savedTheme = localStorage.getItem("theme") || "dark";
+applyTheme(savedTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const isLight = document.documentElement.classList.contains("light-mode");
+    applyTheme(isLight ? "dark" : "light");
+  });
+}
+// Mouse Follow Effect
+const cursorGlow = document.getElementById("cursorGlow");
+
+if (cursorGlow) {
+  window.addEventListener("mousemove", (e) => {
+    cursorGlow.style.left = `${e.clientX}px`;
+    cursorGlow.style.top = `${e.clientY}px`;
+    cursorGlow.style.opacity = "0.6"; /* Increased base opacity */
+  });
+
+  window.addEventListener("mouseleave", () => {
+    cursorGlow.style.opacity = "0";
+  });
+}

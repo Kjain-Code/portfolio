@@ -1,14 +1,52 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
+:root {
+  --bg-color: #000;
+  --bg-secondary: rgba(24, 24, 27, 0.3); /* zinc-900/30 */
+  --text-main: #cbd5e1; /* slate-300 */
+  --text-white: #fff;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --nav-bg: rgba(0, 0, 0, 0.8);
+  --border-color: rgba(255, 255, 255, 0.05);
+  --glow-color: rgba(45, 212, 191, 0.1);
+}
+
+.light-mode {
+  --bg-color: #f8fafc; /* slate-50 */
+  --bg-secondary: #f1f5f9; /* slate-100 */
+  --text-main: #1e293b; /* slate-800 - Darker for better visibility */
+  --text-white: #0f172a; /* slate-900 */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --nav-bg: rgba(248, 250, 252, 0.8);
+  --border-color: rgba(0, 0, 0, 0.1);
+  --glow-color: rgba(45, 212, 191, 0.2);
+}
+
+.light-mode body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, #e2fefd 0%, transparent 40%),
+              radial-gradient(circle at bottom left, #f1f5f9 0%, transparent 40%);
+  z-index: -2;
+  pointer-events: none;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: "Outfit", sans-serif;
 }
 
 body {
-  background: #000;
-  color: #fff;
+  background: var(--bg-color);
+  color: var(--text-main);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Scrollbar */
@@ -35,14 +73,15 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
   transition: all 0.3s ease;
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  opacity: 0.9;
   border-color: rgba(45, 212, 191, 0.3);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px -10px rgba(45, 212, 191, 0.2);
@@ -99,4 +138,23 @@ section {
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+}
+#cursorGlow {
+  background: var(--glow-color);
+  width: 500px; /* Larger glow */
+  height: 500px;
+  filter: blur(100px);
+  mix-blend-mode: screen;
+  z-index: 1; /* Above background blobs */
+}
+
+.light-mode #cursorGlow {
+  mix-blend-mode: multiply;
+  opacity: 0.15 !important;
+}
+
+/* Light Mode Card Contrast */
+.light-mode .glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }

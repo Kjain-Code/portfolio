@@ -17,10 +17,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="bg-black text-slate-300 font-sans selection:bg-teal-500/30">
+<body class="bg-[var(--bg-color)] text-[var(--text-main)] font-sans selection:bg-teal-500/30 transition-colors duration-300">
+
+<!-- CURSOR GLOW -->
+<div id="cursorGlow" class="fixed w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none z-0 translate-x-[-50%] translate-y-[-50%] opacity-0 transition-opacity duration-500"></div>
 
 <!-- NAVBAR -->
-<nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/5">
+<nav class="fixed w-full z-50 bg-[var(--nav-bg)] backdrop-blur-md border-b border-white/5">
   <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
     <!-- Logo/Brand -->
     <a href="#home" class="text-2xl font-bold text-white tracking-tighter">
@@ -34,6 +37,12 @@
       <a href="#featured" class="hover:text-teal-400 transition-colors">Projects</a>
       <a href="#experience" class="hover:text-teal-400 transition-colors">Experience</a>
       <a href="#contact" class="px-5 py-2 bg-teal-500/10 text-teal-400 rounded-full border border-teal-500/20 hover:bg-teal-500 hover:text-black transition-all">Contact</a>
+      
+      <!-- Theme Toggle -->
+      <button id="themeToggle" class="p-2.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-teal-400 transition-all">
+        <svg id="moonIcon" class="w-5 h-5 block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        <svg id="sunIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+      </button>
     </div>
   </div>
 </nav>
@@ -54,7 +63,7 @@
     </div>
     
 
-    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+    <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-[var(--text-white)] mb-6">
       Building digital products with
       <br class="hidden md:block"/>
       <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-teal-100">
@@ -64,25 +73,34 @@
 
 
 
-    <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-      I'm <strong class="text-white">Kritika Jain</strong>, a Software Developer crafting scalable web solutions 
+    <p class="text-lg md:text-xl text-[var(--text-main)] opacity-80 max-w-2xl mx-auto mb-10 leading-relaxed">
+      I'm <strong class="text-[var(--text-white)]">Kritika Jain</strong>, a Software Developer crafting scalable web solutions 
       and engaging digital experiences.
     </p>
 
     <!-- ROLES -->
     <div class="flex flex-wrap justify-center gap-4 text-sm font-medium text-slate-500 mb-12">
-      <span class="px-3 py-1 rounded-md bg-white/5 border border-white/5">Details-Oriented</span>
-      <span class="px-3 py-1 rounded-md bg-white/5 border border-white/5">Full Stack</span>
-      <span class="px-3 py-1 rounded-md bg-white/5 border border-white/5">Creative Thinker</span>
+      <span class="px-3 py-1 rounded-md bg-[var(--glass-bg)] border border-[var(--glass-border)]">Details-Oriented</span>
+      <span class="px-3 py-1 rounded-md bg-[var(--glass-bg)] border border-[var(--glass-border)]">Full Stack</span>
+      <span class="px-3 py-1 rounded-md bg-[var(--glass-bg)] border border-[var(--glass-border)]">Creative Thinker</span>
     </div>
 
     <!-- CTA -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contact" class="px-8 py-3.5 bg-teal-400 text-black font-semibold rounded-full hover:bg-teal-300 transition-all shadow-[0_0_20px_rgba(45,212,191,0.3)]">
-        Hire Me
+    <div class="flex flex-wrap justify-center gap-4 reveal delay-200">
+      <a href="#contact" class="px-8 py-3.5 bg-teal-400 text-black font-bold rounded-full hover:bg-teal-300 transition-all shadow-[0_0_20px_rgba(45,212,191,0.3)]">Hire Me</a>
+      <a href="./KRITIKA JAIN RESUME.pdf" download class="px-8 py-3.5 bg-white/5 border border-white/10 text-white font-bold rounded-full hover:bg-white/10 transition-all backdrop-blur-sm">Download CV</a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="flex justify-center gap-6 mt-12 reveal delay-300">
+      <a href="mailto:kritika098jain@gmail.com" class="w-12 h-12 rounded-full bg-[var(--glass-bg)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-white)] hover:border-teal-400 hover:text-teal-400 transition-all group shadow-lg" title="Email">
+        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
       </a>
-      <a href="./Kritika Resume_compressed.pdf" download class="px-8 py-3.5 bg-white/5 text-white font-medium rounded-full border border-white/10 hover:bg-white/10 transition-all">
-        Download CV
+      <a href="https://github.com/Kjain-Code" target="_blank" class="w-12 h-12 rounded-full bg-[var(--glass-bg)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-white)] hover:border-teal-400 hover:text-teal-400 transition-all group shadow-lg" title="GitHub">
+        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kritika-jain-193662247/" target="_blank" class="w-12 h-12 rounded-full bg-[var(--glass-bg)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-white)] hover:border-teal-400 hover:text-teal-400 transition-all group shadow-lg" title="LinkedIn">
+        <svg class="w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       </a>
     </div>
   </div>
@@ -97,12 +115,12 @@
 <!-- ABOUT -->
 <section id="about" class="py-24 px-6 relative">
   <div class="max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white">About Me</h2>
-    <div class="glass-card p-8 md:p-12 rounded-3xl text-lg text-slate-300 leading-relaxed text-left reveal">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-[var(--text-white)]">About Me</h2>
+    <div class="glass-card p-8 md:p-12 rounded-3xl text-lg text-[var(--text-main)] leading-relaxed text-left reveal">
       <p class="mb-6">
         I am a <span class="text-teal-400 font-medium">Software Developer</span> with a passion for building applications 
         that solve real-world problems. My journey involves working at the intersection of 
-        <span class="text-white">technology, design, and content strategy</span>.
+        <span class="text-[var(--text-white)]">technology, design, and content strategy</span>.
       </p>
       <p>
         Currently, I focus on creating modern web applications using the latest technologies. 
@@ -115,12 +133,12 @@
 
 
 <!-- FEATURED PROJECTS (MOVED UP) -->
-<section id="featured" class="py-24 px-6 bg-zinc-900/30">
+<section id="featured" class="py-24 px-6 bg-[var(--bg-secondary)]">
   <div class="max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row justify-between items-end mb-12 px-4">
       <div class="mb-6 md:mb-0">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">Featured Projects</h2>
-        <p class="text-slate-400">Some of my recent work involves web development and content strategy.</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--text-white)] mb-3">Featured Projects</h2>
+        <p class="text-[var(--text-main)] opacity-80">Some of my recent work involves web development and content strategy.</p>
       </div>
       
       <!-- NAV ARROWS -->
@@ -149,7 +167,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">Snake Game</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
               A classic Snake game built with vanilla HTML, CSS, and JavaScript. Features smooth controls and score tracking.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -169,7 +187,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">FPS Subtitle</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
               Designed complete website UI and layout, including a featured films showcase for a media production entity.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -189,7 +207,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">Placement Kit</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
               Structured educational content and study flow for student placement preparation.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -209,7 +227,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">ExposeTrendze</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
               High-conversion product branding carousels for social media marketing.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -229,7 +247,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">LinkedIn Growth</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
               Marketing and educational carousel posts to drive engagement.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -249,7 +267,7 @@
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-white mb-2">Educational Content</h3>
-            <p class="text-sm text-slate-400 mb-4">
+            <p class="text-sm text-[var(--text-main)] opacity-80 mb-4">
                Created extensive notes and interview-focused content across multiple programming topics.
             </p>
             <div class="flex flex-wrap gap-2">
@@ -265,6 +283,192 @@
 </section>
 
 
+<!-- SKILLS SECTION -->
+<section id="skills" class="py-20 px-6 relative overflow-hidden bg-[var(--bg-color)]">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12 reveal">
+      <h2 class="text-3xl md:text-5xl font-bold text-[var(--text-white)] mb-4">Technical Expertise</h2>
+      <p class="text-slate-500 font-medium">Comprehensive skill set in web development and software engineering</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      
+      <!-- Languages -->
+      <div class="glass-card p-6 rounded-2xl reveal">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Languages</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/javascript/F7DF1E" class="w-3 h-3" alt=""> JavaScript
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/php/777BB4" class="w-3 h-3" alt=""> PHP
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/openjdk/white" class="w-3 h-3" alt=""> Java
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/cplusplus/00599C" class="w-3 h-3" alt=""> C++
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/mysql/4479A1" class="w-3 h-3" alt=""> SQL
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/html5/E34F26" class="w-3 h-3" alt=""> HTML5
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/css3/1572B6" class="w-3 h-3" alt=""> CSS3
+          </span>
+        </div>
+      </div>
+
+      <!-- Development -->
+      <div class="glass-card p-6 rounded-2xl reveal delay-100">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Development</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/react/61DAFB" class="w-3 h-3" alt=""> React JS
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/nodedotjs/339933" class="w-3 h-3" alt=""> Node.js
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/bootstrap/7952B3" class="w-3 h-3" alt=""> Bootstrap 5
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/tailwindcss/06B6D4" class="w-3 h-3" alt=""> Tailwind CSS
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/jquery/0769AD" class="w-3 h-3" alt=""> jQuery
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> RESTful API
+          </span>
+        </div>
+      </div>
+
+      <!-- Data & Analysis -->
+      <div class="glass-card p-6 rounded-2xl reveal delay-200">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Data & Analysis</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg> DSA
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/powerbi/F2C811" class="w-3 h-3" alt=""> Power BI
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/mysql/4479A1" class="w-3 h-3" alt=""> MySQL
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg> Normalization
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg> Database Design
+          </span>
+        </div>
+      </div>
+
+      <!-- Developer Tools -->
+      <div class="glass-card p-6 rounded-2xl reveal">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center text-orange-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 11-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Dev Tools</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/git/F05032" class="w-3 h-3" alt=""> Git
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/github/white" class="w-3 h-3" alt=""> GitHub
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/visualstudiocode/007ACC" class="w-3 h-3" alt=""> VS Code
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/xampp/FB7A24" class="w-3 h-3" alt=""> XAMPP
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/googlechrome/4285F4" class="w-3 h-3" alt=""> Chrome DevTools
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <img src="https://cdn.simpleicons.org/postman/FF6C37" class="w-3 h-3" alt=""> Postman
+          </span>
+        </div>
+      </div>
+
+      <!-- Professional Skills -->
+      <div class="glass-card p-6 rounded-2xl reveal delay-100">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Professional</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg> Project Management
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg> Client Communication
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg> Requirements Gathering
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg> Documentation
+          </span>
+        </div>
+      </div>
+
+      <!-- Web Core -->
+      <div class="glass-card p-6 rounded-2xl reveal delay-200">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+          </div>
+          <h3 class="text-lg font-bold text-[var(--text-white)]">Web Core</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+             <img src="https://cdn.simpleicons.org/json/white" class="w-3 h-3" alt=""> JSON
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg> Sessions
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> Cookies
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg> Authentication
+          </span>
+          <span class="px-3 py-1 bg-[var(--glass-bg)] rounded-full text-xs font-medium border border-[var(--border-color)] flex items-center gap-2">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg> Authorization
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- EXPERIENCE -->
 <section id="experience" class="py-24 px-6 relative">
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -272,7 +476,7 @@
   </div>
 
   <div class="max-w-5xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white">Experience</h2>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-[var(--text-white)]">Experience</h2>
     
     <div class="grid md:grid-cols-2 gap-8 relative z-10">
       
@@ -280,12 +484,12 @@
       <div class="glass-card p-8 rounded-2xl hover:border-teal-500/30 reveal">
         <div class="flex justify-between items-start mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white">Web Development Intern</h3>
+            <h3 class="text-xl font-bold text-[var(--text-white)]">Web Development Intern</h3>
             <p class="text-teal-400 text-sm font-medium">OpenBlockAI</p>
           </div>
           <span class="text-xs text-slate-500 border border-slate-700 px-2 py-1 rounded">Dec '25 - Feb '26</span>
         </div>
-        <ul class="space-y-2 text-sm text-slate-400">
+        <ul class="space-y-2 text-sm text-[var(--text-main)] opacity-70">
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Built responsive UI components using React.js</li>
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> collaborated with backend teams for blockchain integration</li>
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Optimized frontend performance</li>
@@ -296,12 +500,12 @@
       <div class="glass-card p-8 rounded-2xl hover:border-teal-500/30 reveal delay-100">
         <div class="flex justify-between items-start mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white">Content Lead</h3>
+            <h3 class="text-xl font-bold text-[var(--text-white)]">Content Lead</h3>
             <p class="text-teal-400 text-sm font-medium">Topper World</p>
           </div>
           <span class="text-xs text-slate-500 border border-slate-700 px-2 py-1 rounded">Jan '23 - July '25</span>
         </div>
-        <ul class="space-y-2 text-sm text-slate-400">
+        <ul class="space-y-2 text-sm text-[var(--text-main)] opacity-70">
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Owned end-to-end content strategy</li>
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Managed LinkedIn branding & carousel design</li>
         </ul>
@@ -311,12 +515,12 @@
        <div class="glass-card p-8 rounded-2xl hover:border-teal-500/30 reveal delay-100">
         <div class="flex justify-between items-start mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white">Technical Writer</h3>
+            <h3 class="text-xl font-bold text-[var(--text-white)]">Technical Writer</h3>
             <p class="text-teal-400 text-sm font-medium">AI With Raj</p>
           </div>
           <span class="text-xs text-slate-500 border border-slate-700 px-2 py-1 rounded">Mar '24 - Apr '24</span>
         </div>
-        <ul class="space-y-2 text-sm text-slate-400">
+        <ul class="space-y-2 text-sm text-[var(--text-main)] opacity-70">
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Simplified complex AI concepts for learners</li>
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Created technical documentation and guides</li>
         </ul>
@@ -326,12 +530,12 @@
        <div class="glass-card p-8 rounded-2xl hover:border-teal-500/30 reveal delay-100">
         <div class="flex justify-between items-start mb-4">
           <div>
-            <h3 class="text-xl font-bold text-white">Biz Dev Executive</h3>
+            <h3 class="text-xl font-bold text-[var(--text-white)]">Biz Dev Executive</h3>
             <p class="text-teal-400 text-sm font-medium">FPS Subtitle</p>
           </div>
           <span class="text-xs text-slate-500 border border-slate-700 px-2 py-1 rounded">2025</span>
         </div>
-        <ul class="space-y-2 text-sm text-slate-400">
+        <ul class="space-y-2 text-sm text-[var(--text-main)] opacity-70">
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Streamlined business operations and workflows</li>
           <li class="flex items-start"><span class="mr-2 text-teal-400">▹</span> Coordinated hiring processes</li>
         </ul>
@@ -347,13 +551,13 @@
   <div class="max-w-3xl mx-auto glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-teal-400 to-blue-500"></div>
     
-    <h2 class="text-3xl font-bold text-white mb-6">Let's Work Together</h2>
+    <h2 class="text-3xl font-bold text-[var(--text-white)] mb-6">Let's Work Together</h2>
     <p class="text-slate-400 mb-10 max-w-lg mx-auto">
       Have a project in mind or just want to say hi? I'm always open to discussing new projects and opportunities.
     </p>
 
     <div class="flex flex-col md:flex-row gap-8 justify-center items-center mb-10">
-      <a href="mailto:kritika098jain@gmail.com" class="flex items-center gap-3 text-white hover:text-teal-400 transition-colors">
+      <a href="mailto:kritika098jain@gmail.com" class="flex items-center gap-3 text-[var(--text-white)] hover:text-teal-400 transition-colors">
         <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         </div>
@@ -384,7 +588,7 @@
   </div>
 </section>
 
-<footer class="py-8 text-center text-slate-600 text-sm border-t border-white/5">
+<footer class="py-8 text-center text-[var(--text-main)] opacity-60 text-sm border-t border-[var(--border-color)]">
   <p>© 2026 Kritika Jain. All rights reserved.</p>
 </footer>
 
