@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap");
 
+
 :root {
   --bg-color: #000;
-  --bg-secondary: rgba(24, 24, 27, 0.3); /* zinc-900/30 */
-  --text-main: #cbd5e1; /* slate-300 */
+  --bg-secondary: rgba(24, 24, 27, 0.3);
+  --text-main: #cbd5e1;
   --text-white: #fff;
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.05);
@@ -13,10 +14,10 @@
 }
 
 .light-mode {
-  --bg-color: #f8fafc; /* slate-50 */
-  --bg-secondary: #f1f5f9; /* slate-100 */
-  --text-main: #1e293b; /* slate-800 - Darker for better visibility */
-  --text-white: #0f172a; /* slate-900 */
+  --bg-color: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --text-main: #1e293b;
+  --text-white: #0f172a;
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(0, 0, 0, 0.1);
   --nav-bg: rgba(248, 250, 252, 0.8);
@@ -50,21 +51,11 @@ body {
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #111;
-}
-::-webkit-scrollbar-thumb {
-  background: #2dd4bf;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #14b8a6;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #2dd4bf; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #14b8a6; }
 
-/* Utilities */
 .text-gradient {
   background: linear-gradient(to right, #2dd4bf, #ccfbf1);
   -webkit-background-clip: text;
@@ -80,72 +71,57 @@ body {
 }
 
 .glass-card:hover {
-  background: var(--glass-bg);
   opacity: 0.9;
   border-color: rgba(45, 212, 191, 0.3);
   transform: translateY(-5px);
   box-shadow: 0 10px 30px -10px rgba(45, 212, 191, 0.2);
 }
 
-/* HERO ROLE ANIMATION */
 .role {
   opacity: 0;
   transform: translateY(8px);
   animation: roleFade 0.6s ease forwards;
 }
-
-.delay-1 {
-  animation-delay: 0.2s;
-}
-.delay-2 {
-  animation-delay: 0.4s;
-}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
 
 @keyframes roleFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Reveal Animation */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease;
 }
-
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Section Spacing */
-section {
-  position: relative;
-}
+section { position: relative; }
 
-/* Decorative Background Elements */
 .glow-blob {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(45, 212, 191, 0.15) 0%,
-    rgba(0, 0, 0, 0) 70%
-  );
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
+  filter: blur(80px);
 }
+
 #cursorGlow {
-  background: var(--glow-color);
-  width: 500px; /* Larger glow */
+  position: fixed;
+  width: 500px;
   height: 500px;
+  background: var(--glow-color);
+  border-radius: 50%;
   filter: blur(100px);
   mix-blend-mode: screen;
-  z-index: 1; /* Above background blobs */
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s;
 }
 
 .light-mode #cursorGlow {
@@ -153,8 +129,118 @@ section {
   opacity: 0.15 !important;
 }
 
-/* Light Mode Card Contrast */
 .light-mode .glass-card {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   COMPONENT STYLES — Tailwind CDN ka fallback
+   (ye classes tab kaam karengi jab Tailwind
+   load na ho ya JIT classes missing hon)
+   ============================================ */
+
+/* Navbar */
+.contact-btn {
+  background: rgba(45, 212, 191, 0.1);
+  color: #2dd4bf;
+  border-color: rgba(45, 212, 191, 0.2);
+}
+.contact-btn:hover {
+  background: #2dd4bf;
+  color: black;
+}
+.theme-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hero section */
+.available-badge {
+  border-color: rgba(45, 212, 191, 0.2);
+  background: rgba(45, 212, 191, 0.05);
+  color: #2dd4bf;
+}
+
+.hire-btn {
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
+}
+
+.cv-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(4px);
+}
+
+/* Social icons */
+.social-icon {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-white);
+}
+.social-icon:hover {
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+}
+.social-icon svg {
+  transition: transform 0.2s;
+}
+.social-icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* Project cards */
+.project-card:hover .project-overlay {
+  opacity: 1 !important;
+}
+.project-card:hover .project-img {
+  transform: scale(1.1);
+}
+.project-overlay-btn {
+  transform: translateY(16px);
+  transition: transform 0.3s;
+}
+.project-card:hover .project-overlay-btn {
+  transform: translateY(0);
+}
+
+/* Skill tags */
+.skill-tag {
+  background: rgba(255, 255, 255, 0.05);
+}
+.skill-badge {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+}
+
+/* Skill icon backgrounds */
+.skill-icon-bg-teal  { background: rgba(20, 184, 166, 0.1); }
+.skill-icon-bg-cyan  { background: rgba(6, 182, 212, 0.1); }
+.skill-icon-bg-indigo { background: rgba(99, 102, 241, 0.1); }
+.skill-icon-bg-orange { background: rgba(249, 115, 22, 0.1); }
+.skill-icon-bg-yellow { background: rgba(234, 179, 8, 0.1); }
+.skill-icon-bg-emerald { background: rgba(16, 185, 129, 0.1); }
+
+/* Slider buttons */
+.slider-btn:hover {
+  background: #2dd4bf !important;
+  color: black;
+}
+
+/* Contact icons */
+.contact-icon-bg {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Glow blobs — blur fix without Tailwind arbitrary values */
+.glow-blob-hero-1 {
+  filter: blur(120px);
+}
+.glow-blob-hero-2 {
+  filter: blur(100px);
+}
+.glow-blob-exp {
+  filter: blur(80px);
 }
