@@ -35,7 +35,7 @@ const roles = [
 const socialLinks = [
   { icon: FiGithub, href: "https://github.com/kjain-code", label: "GitHub" },
   { icon: FiLinkedin, href: "https://www.linkedin.com/in/kritika-jain-dev/", label: "LinkedIn" },
-  { icon: FiMail, href: "mailto:kritikajain@email.com", label: "Email" },
+  { icon: FiMail, href: "mailto:kritika098jain@gmail.com", label: "Email" },
 ]
 
 export default function Hero() {
@@ -44,7 +44,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
     >
       {/* Three.js Background */}
       <div className="absolute inset-0 z-0">

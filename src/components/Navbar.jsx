@@ -54,7 +54,7 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <motion.a
-          href="mailto:kritikajain@email.com"
+          href="mailto:kritika098jain@gmail.com"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full border border-teal-400/30 bg-teal-400/10 text-teal-400 text-sm font-medium hover:bg-teal-400 hover:text-black transition-all duration-300"
