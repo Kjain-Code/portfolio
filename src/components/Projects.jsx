@@ -2,6 +2,13 @@ import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useAnimation } from "framer-motion"
 import { useScrollReveal } from "../hooks/useScrollReveal"
 import { FiExternalLink, FiChevronLeft, FiChevronRight } from "react-icons/fi"
+import exposeTrendze from "../assets/projects/expose-trendze.png";
+import fpsSubtitle from "../assets/projects/fps-subtitle.png";
+import githubFinder from "../assets/projects/github-finder.png";
+import placementKit from "../assets/projects/placement-kit.png";
+import snakeGame from "../assets/projects/snake-game.png";
+import taskManager from "../assets/projects/task-manager.png";
+import wipo from "../assets/projects/wipo.png";
 
 const projects = [
   {
@@ -12,7 +19,7 @@ const projects = [
     color: "teal",
     featured: true,
     live: "https://www.wipogroupinllc.com/",
-    image: "/src/assets/projects/wipo.png",
+    image: wipo,
   },
   {
     id: 2,
@@ -22,7 +29,7 @@ const projects = [
     color: "purple",
     featured: true,
     live: "https://github-profile-finder-flame.vercel.app/",
-    image: "/src/assets/projects/github-finder.png",
+    image: githubFinder,
   },
   {
     id: 3,
@@ -32,7 +39,7 @@ const projects = [
     color: "teal",
     featured: false,
     live: "https://kjain-code.github.io/Snake-Game/",
-    image: "/src/assets/projects/snake-game.png",
+    image: snakeGame,
   },
   {
     id: 4,
@@ -42,7 +49,7 @@ const projects = [
     color: "purple",
     featured: true,
     live: "https://to-do-delta-puce.vercel.app/",
-    image: "/src/assets/projects/task-manager.png",
+    image: taskManager,
   },
   {
     id: 5,
@@ -52,7 +59,7 @@ const projects = [
     color: "teal",
     featured: false,
     live: "https://fpssubtitle.com/",
-    image: "/src/assets/projects/fps-subtitle.png",
+    image: fpsSubtitle,
   },
   {
     id: 6,
@@ -62,7 +69,7 @@ const projects = [
     color: "purple",
     featured: false,
     live: "https://topperworld.in/topperworld-placement-kit/",
-    image: "/src/assets/projects/placement-kit.png",
+    image: placementKit,
   },
   {
     id: 7,
@@ -72,7 +79,7 @@ const projects = [
     color: "teal",
     featured: false,
     live: "https://www.instagram.com/trachtenworld/",
-    image: "/src/assets/projects/expose-trendze.png",
+    image: exposeTrendze,
   },
 ]
 
@@ -109,7 +116,7 @@ export default function Projects() {
   // Smooth auto slide using requestAnimationFrame
   useEffect(() => {
     let lastTime = null
-    const speed = 0.1 // px per ms
+    const speed = 0.05 // px per ms
 
     const animate = (timestamp) => {
       if (!lastTime) lastTime = timestamp
